@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 interface Service {
   title: string
@@ -29,8 +30,11 @@ const services: Service[] = [
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-20 px-6 max-w-6xl mx-auto
-      transition-colors duration-300 hover:bg-gray-100 focus-within:bg-gray-100">
+    <section
+      id="services"
+      className="py-20 px-6 max-w-6xl mx-auto
+      transition-colors duration-300 hover:bg-gray-100 focus-within:bg-gray-100"
+    >
       <h2 className="text-4xl font-semibold mb-10 text-center">Services</h2>
       <div className="grid md:grid-cols-3 gap-10">
         {services.map((service) => (
@@ -39,7 +43,15 @@ const Services: React.FC = () => {
             className="shadow-lg rounded-lg overflow-hidden bg-white cursor-pointer
               transition transform duration-300 hover:shadow-2xl hover:scale-[1.03]"
           >
-            <img src={service.image} alt={service.title} className="w-full h-48 object-cover" />
+            <Image
+              src={service.image}
+              alt={service.title}
+              width={400}       // approximate width matching container
+              height={192}      // keep aspect ratio close to original h-48 (12rem = 192px)
+              className="object-cover w-full h-48"
+              style={{ width: '100%', height: '192px' }} // for Next 13 style override
+              priority={false}  // optional
+            />
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>

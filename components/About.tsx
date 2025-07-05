@@ -1,14 +1,21 @@
 import React from 'react'
+import Image from 'next/image'
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 px-6 max-w-5xl mx-auto
-      transition-colors duration-300 hover:bg-gray-100 focus-within:bg-gray-100">
+    <section
+      id="about"
+      className="py-20 px-6 max-w-5xl mx-auto
+        transition-colors duration-300 hover:bg-gray-100 focus-within:bg-gray-100"
+    >
       <div className="flex flex-col md:flex-row items-center gap-10">
-        <img
+        <Image
           src="/images/dr-serena.jpg"
           alt="Dr. Serena Blake"
-          className="w-64 h-64 rounded-full object-cover"
+          width={256}      // approx 64 * 4 (w-64 = 16rem)
+          height={256}     // h-64 same as width
+          className="rounded-full object-cover"
+          priority        // optional: preloads image for faster LCP
         />
         <div>
           <h2 className="text-3xl font-semibold mb-4">Meet Dr. Serena Blake</h2>
